@@ -16,7 +16,7 @@ Here is a fun assessment I got to do using the Star Wars API from [SWAPI](https:
 
 ### External API: [SWAPI](https://swapi.dev/)
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Star_Wars_Logo..png" width="50" height="50">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Star_Wars_Logo..png" width="80" height="80">
 
 ### Connect:
 
