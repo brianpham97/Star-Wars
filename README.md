@@ -1,6 +1,6 @@
 # Brian Pham Portfolio
 
-Here is a fun assessment I got to do using the Star Wars API from [SWAPI](https://swapi.dev/). User can select two characters and you can see if the two characters share a home planet, vehicle, or starship and what movies they appear in together. Application is styled to a Star Wars theme.
+Application using the Star Wars API from [SWAPI](https://swapi.dev/) to allow the user to select two characters and see if the two characters share a home planet, vehicle, or starship and what movies they appear in together. Application is styled to a Star Wars theme.
 
 ## Technologies Used
 
