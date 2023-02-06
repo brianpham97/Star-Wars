@@ -14,6 +14,9 @@ Application using the Star Wars API from [SWAPI](https://swapi.dev/) to allow th
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
+**Deployment:** &nbsp;&nbsp;
+  ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+
 ### External API: [SWAPI](https://swapi.dev/)
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Star_Wars_Logo..png" width="80" height="80">
