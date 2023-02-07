@@ -19,7 +19,7 @@ const Panels = () => {
       url(${photos[selectedCharacters.right]})`
     } : {}
 
-  let panelL =
+  let panelLeft =
     selectedCharacters.left !== null ? (
       <div
         style={styleL}
@@ -36,7 +36,7 @@ const Panels = () => {
       </div>
     );
 
-    let panelR =
+    let panelRight =
       selectedCharacters.right !== null ? (
         <div
           style={styleR}
@@ -55,8 +55,8 @@ const Panels = () => {
 
   return (
     <div name="panels" className="max-w-screen-lg mx-auto my-1 pt-3 flex flex-col justify-between items-center gap-4 mb-4 sm:flex-row">
-      {panelL}
-      {panelR}
+      {panelLeft}
+      {panelRight}
     </div>
   );
 };

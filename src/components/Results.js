@@ -7,18 +7,18 @@ import { useDispatch } from "react-redux";
 
 const Results = () => {
   const [description, setDescription] = useState('')
-  const [errorSubmit, setErrorSubmit] = useState(false)
-  const [loader, setLoader] = useState(false)
-  const ref = useRef(null)
+  const [showErrorSubmit, setShowErrorSubmit] = useState(false)
+  const [showLoader, setShowLoader] = useState(false)
+  const scrollRef = useRef(null)
 
   const selectedCharacters = useSelector((state) => state.selected.value);
   const movies = useSelector((state) => state.films.value);
   const dispatch = useDispatch();
 
   const runSpinner = () => {
-    setLoader(true)
+    setShowLoader(true)
     setTimeout(() => {
-      setLoader(false)
+      setShowLoader(false)
       let results = compare(selectedCharacters, movies);
       setDescription(results);
     }, 500)
@@ -32,26 +32,26 @@ const Results = () => {
   const submit = async () => {
     if (selectedCharacters.left && selectedCharacters.right) {
       setDescription('');
-      ref.current.scrollIntoView({behavior: 'smooth'})
+      scrollRef.current.scrollIntoView({behavior: 'smooth'})
       runSpinner();
 
     } else {
-      setErrorSubmit(true)
+      setShowErrorSubmit(true)
       setTimeout(() => {
-        setErrorSubmit(false)
+        setShowErrorSubmit(false)
       }, 1500)
     }
   }
 
   const spinner =
     <div className="flex justify-center items-center">
-      <ClipLoader color={"#C1BCBB"} loader={loader} size={60}/>
+      <ClipLoader color={"#C1BCBB"} showLoader={showLoader} size={60}/>
     </div>
 
   return (
     <div>
       <div className="w-screen-md mx-auto h-32 flex flex-col justify-center items-center relative">
-        {errorSubmit ? (
+        {showErrorSubmit ? (
           <p
             id="fade-text"
             className="absolute top-0 text-red-500 text-center italic"
@@ -78,8 +78,8 @@ const Results = () => {
         </div>
       </div>
 
-      <div ref={ref} className="max-w-screen-md mx-auto h-28 flex justify-center bg-gradient-to-b from-gray-600 to-gray-800">
-        {loader ? spinner : null}
+      <div ref={scrollRef} className="max-w-screen-md mx-auto h-28 flex justify-center bg-gradient-to-b from-gray-600 to-gray-800">
+        {showLoader ? spinner : null}
         <p id="fin" className="text-white text-lg mt-4 mx-3">
           {description}
         </p>

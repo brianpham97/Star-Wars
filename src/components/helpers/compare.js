@@ -36,6 +36,7 @@ const compareHomeworld = (sameHomeworld, movies, storage) => {
         return planet;
       }
     });
+
     if (checkPlanets.length > 0) {
       storage.push({ title: movie.title, url: movie.url });
     }
@@ -47,6 +48,7 @@ const compareStarships = (sameStarships, movies, storage) => {
     let checkStarships = sameStarships.filter(starship =>
       movie.starships.includes(starship)
     );
+
     if (checkStarships.length > 0) {
       storage.push({ title: movie.title, url: movie.url });
     }
@@ -59,6 +61,7 @@ const compareVehicles = (sameVehicles, movies, storage) => {
     let checkVehicles = sameVehicles.filter(vehicle =>
       movie.vehicles.includes(vehicle)
     );
+
     if (checkVehicles.length > 0) {
       storage.push({title: movie.title, url: movie.url})
     }
@@ -70,12 +73,14 @@ const compareMovies = (sameMovies, storage) => {
   if (storage.length === 0) {
     return []
   }
+
   let matchingMovies = new Set()
     for (let i = 0; i < storage.length; i++) {
       if (sameMovies.includes(storage[i].url)) {
         matchingMovies.add(storage[i].title)
       }
     }
+
   return [...matchingMovies]
 }
 
@@ -97,5 +102,4 @@ const createDescription = (characters, movies) => {
   }
 
   return queryString;
-
 }

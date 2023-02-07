@@ -6,7 +6,7 @@ import axios from "axios";
 const List = () => {
   const [page, setPage] = useState(1)
   const [memo, setMemo] = useState({}) //creating a memo beacuse API is slow sometimes
-  const [data, setData] = useState([])
+  const [characterData, setCharacterData] = useState([])
 
   const changePage = (direction) => {
     direction === "back"
@@ -21,9 +21,9 @@ const List = () => {
       );
       let characterSet = incomingData.data.results;
       setMemo({...memo, [page] : characterSet})
-      setData(characterSet);
+      setCharacterData(characterSet);
     } else {
-      setData(memo[page])
+      setCharacterData(memo[page])
     }
   };
 
@@ -31,7 +31,7 @@ const List = () => {
       getData();
     }, [page]);
 
-  const characters = data.map((character, i) => {
+  const characters = characterData.map((character, i) => {
     return <Character key={i} character={character}/>
   })
 
