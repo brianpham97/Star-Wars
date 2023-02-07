@@ -5,10 +5,12 @@ import App from './App';
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import selectedCharactersReducer from "./features/selected";
+import filmsReducer from "./features/films"
 
 const store = configureStore({
   reducer: {
-    selected: selectedCharactersReducer
+    selected: selectedCharactersReducer,
+    films: filmsReducer
   }
 })
 

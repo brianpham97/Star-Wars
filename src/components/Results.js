@@ -1,21 +1,25 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import { compare } from "./helpers/compare";
+import { reset } from "../features/selected";
 import ClipLoader from "react-spinners/ClipLoader"
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { reset } from "../features/selected";
 
 const Results = () => {
   const [description, setDescription] = useState('')
   const [errorSubmit, setErrorSubmit] = useState(false)
   const [loader, setLoader] = useState(false)
+
   const selectedCharacters = useSelector((state) => state.selected.value);
+  const movies = useSelector((state) => state.films.value);
   const dispatch = useDispatch();
 
   const runSpinner = () => {
     setLoader(true)
     setTimeout(() => {
       setLoader(false)
+      let results = compare(selectedCharacters, movies);
+      setDescription(results);
     }, 500)
   }
 
@@ -26,15 +30,9 @@ const Results = () => {
 
   const submit = async () => {
     if (selectedCharacters.left && selectedCharacters.right) {
-      setDescription("");
-      runSpinner()
-      const left = await axios.get(`https://swapi.dev/api/people/${selectedCharacters.leftId}/`);
+      setDescription('');
+      runSpinner();
 
-      const right = await axios.get(
-        `https://swapi.dev/api/people/${selectedCharacters.rightId}/`
-      );
-
-      compare(left.data, right.data)
     } else {
       setErrorSubmit(true)
       setTimeout(() => {
@@ -43,67 +41,8 @@ const Results = () => {
     }
   }
 
-  const compare = (left, right) => {
-    let somethingShared = false
-
-    while (somethingShared !== true) {
-      if (left.homeworld === right.homeworld) {
-        somethingShared = true
-        break
-      }
-
-      let sameStarships = left.starships.filter((starship) =>
-        right.starships.includes(starship)
-      );
-      if (sameStarships.length > 0) {
-        somethingShared = true
-        break
-      }
-
-      let sameVehicles = left.vehicles.filter((vehicle) =>
-        right.vehicles.includes(vehicle)
-      );
-      if (sameVehicles.length > 0) {
-        somethingShared = true
-        break
-      }
-      break
-    }
-
-    if (somethingShared === true) {
-      let sameFilms = left.films.filter((films) =>
-        right.films.includes(films)
-      );
-      createDescription(sameFilms);
-    } else {
-      let output = `${selectedCharacters.left} and ${selectedCharacters.right} have no matching planets, vehicles, or starships.`;
-      setDescription(output)
-      setLoader(false);
-    }
-  }
-
-  const createDescription = async (films) => {
-    if (films.length === 0) {
-      let output = `${selectedCharacters.left} and ${selectedCharacters.right} have no movies together.`;
-      setDescription(output)
-      setLoader(false);
-      return
-    }
-
-    let movieList = []
-    for (let film of films) {
-      let movie = await axios.get(film)
-      movieList.push(movie.data.title)
-    }
-    let queryString = movieList.reduce((accumulator, movie) => accumulator + movie + ', ', '')
-    queryString = queryString.slice(0, queryString.length - 2)
-    let output = `${selectedCharacters.left} and ${selectedCharacters.right} both appear in ${queryString}.`
-    setDescription(output)
-    setLoader(false);
-  }
-
   const spinner =
-    <div className="flex, justify-center items-center">
+    <div className="flex justify-center items-center">
       <ClipLoader color={"#C1BCBB"} loader={loader} size={60}/>
     </div>
 
@@ -118,14 +57,14 @@ const Results = () => {
         <div className="flex justify-between w-1/2">
           <h1
             id="button"
-            className="submit font-button bg-green-400 border-green-600"
+            className="btn font-button bg-green-400 border-green-600"
             onClick={submit}
           >
             Submit
           </h1>
           <h1
             id="button"
-            className="reset font-button bg-red-400 border-red-600"
+            className="btn font-button bg-red-400 border-red-600"
             onClick={undo}
           >
             Reset

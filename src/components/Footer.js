@@ -3,12 +3,12 @@ import {AiOutlineGithub, AiOutlineLinkedin} from "react-icons/ai"
 
 const Footer = () => {
   return (
-    <footer className="w-full h-14 bg-black text-white flex justify-center">
+    <footer className="w-full h-14 flex justify-center bg-black text-white">
       <div className="w-[75vw] flex justify-between items-center sm:w-[50vw]">
         <a href="https://github.com/brianpham97" target="_blank">
           <AiOutlineGithub className="text-white hover:text-[#c9aa71]" />
         </a>
-        <p>
+        <p className="italic">
           Designed by {" "}
           <a
             href="https://brianpham97.github.io/portfolio/"

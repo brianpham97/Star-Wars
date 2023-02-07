@@ -14,7 +14,7 @@ body {
 }
 
 #star-wars {
-  animation: credits 10s linear;
+  animation: credits 10s ease-in-out;
 }
 
 @keyframes credits {
@@ -51,10 +51,11 @@ body {
 #button {
   padding: 0.5rem 1.5rem;
   border-width: 2px;
+  font-weight: bold;
   cursor: pointer;
 }
 
-#button:hover {
+.btn:hover {
   transform: scaleX(1.02);
 }
 
@@ -66,7 +67,6 @@ body {
 .direction:hover {
   background-color: gold;
   color: black;
-  font-weight: bold;
 }
 
 #fade-text {

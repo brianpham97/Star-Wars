@@ -5,9 +5,19 @@ import { useSelector } from "react-redux";
 const Panels = () => {
   const selectedCharacters = useSelector((state) => state.selected.value);
 
-  let styleL = selectedCharacters.left !== null ? {backgroundImage: `linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), url(${photos[selectedCharacters.left]})`} : {}
+  let styleL = selectedCharacters.left !== null ?
+    {
+      backgroundImage:
+      `linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)),
+      url(${photos[selectedCharacters.left]})`
+    } : {}
 
-  let styleR = selectedCharacters.right !== null ? {backgroundImage: `linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), url(${photos[selectedCharacters.right]})`} : {}
+  let styleR = selectedCharacters.right !== null ?
+    {
+      backgroundImage:
+      `linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)),
+      url(${photos[selectedCharacters.right]})`
+    } : {}
 
   let panelL =
     selectedCharacters.left !== null ? (

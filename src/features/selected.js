@@ -1,6 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-let template = {left: null, leftId: null, right: null, rightId: null}
+let template = {
+  left: null,
+  leftFilms: [],
+  leftHomeworld: null,
+  leftVehicles: [],
+  leftStarships: [],
+  leftUrl: null,
+  right: null,
+  rightFilms: [],
+  rightHomeworld: null,
+  rightVehicles: [],
+  rightStarships: [],
+  rightUrl: null
+};
 
 export const selectedCharactersSlice = createSlice({
   name: "selectedCharacters",
