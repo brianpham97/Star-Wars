@@ -69,7 +69,7 @@ const List = () => {
         )}
       </div>
 
-      <div className="h-60 w-full grid grid-cols-4 gap-4 sm:grid-cols-5 bg-black text-white">
+      <div className="h-60 w-full grid grid-cols-4 gap-4 sm:grid-cols-5 bg-black">
         {characters}
       </div>
     </>
