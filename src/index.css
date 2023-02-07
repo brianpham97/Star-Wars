@@ -29,8 +29,8 @@ body {
   text-shadow: 0 0 5px #ffff80;
 }
 
-p-2 items-center bg-black text-white hover:bg-white #star-wars {
-  animation: credits 10s ease-in-out;
+#star-wars {
+  animation: credits 10s linear;
 }
 
 @keyframes credits {
