@@ -13,7 +13,23 @@ body {
   box-sizing: border-box;
 }
 
-#star-wars {
+#started {
+  padding: 0.5rem;
+  color: white;
+  border: solid 2px white;
+  background-color: black;
+}
+
+#started:hover {
+  color: black;
+  background-color: white;
+}
+
+#fin {
+  text-shadow: 0 0 5px #ffff80;
+}
+
+p-2 items-center bg-black text-white hover:bg-white #star-wars {
   animation: credits 10s ease-in-out;
 }
 
@@ -65,8 +81,8 @@ body {
 }
 
 .direction:hover {
-  background-color: gold;
   color: black;
+  background-color: gold;
 }
 
 #fade-text {
@@ -93,8 +109,4 @@ body {
   100% {
     opacity: 0;
   }
-}
-
-#fin {
-  text-shadow: 0 0 5px #ffff80;
 }

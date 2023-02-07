@@ -54,7 +54,7 @@ const Panels = () => {
       );
 
   return (
-    <div className="max-w-screen-lg mx-auto flex flex-col justify-between items-center gap-4 mb-4 sm:flex-row">
+    <div name="panels" className="max-w-screen-lg mx-auto my-1 pt-3 flex flex-col justify-between items-center gap-4 mb-4 sm:flex-row">
       {panelL}
       {panelR}
     </div>

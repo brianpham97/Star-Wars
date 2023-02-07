@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import Header from './components/Header'
+import Overview from "./components/Overview";
 import Panels from './components/Panels'
 import List from "./components/List";
 import Results from "./components/Results"
@@ -28,12 +29,13 @@ const App = () => {
   return (
     <div className="bg-cover" style={bg}>
       <Header />
+      <Overview />
       <Panels />
       <List />
       <Results />
       <Footer />
     </div>
-  )
+  );
 }
 
 export default App;

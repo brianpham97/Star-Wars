@@ -71,8 +71,8 @@ const Character = ({character}) => {
   }, [character.name, selectedCharacters])
 
   return (
-    <div className="flex justify-center items-center bg-white">
-      <h1 style={highlightName ? {color: 'gold', textShadow: '0 0 5px #ffff80'} : {}} className="cursor-pointer font-courier text-center hover:scale-x-[1.03]" onClick={() => selectCharacter(character)}>{character.name}</h1>
+    <div className="flex justify-center items-center text-white">
+      <h1 style={highlightName ? {color: 'gold', textShadow: '0 0 5px #ffff80'} : {}} className="cursor-pointer font-courier text-lg text-center ml-1 hover:scale-x-[1.03] sm:text-xl" onClick={() => selectCharacter(character)}>{character.name}</h1>
     </div>
   );
 }
