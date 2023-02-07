@@ -23,6 +23,6 @@ Currently deployed on [AWS](http://34.220.175.62:3000/).
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Star_Wars_Logo..png" width="80" height="80">
 
-### Connect:
+## Connect:
 
 [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/lbrian-phaml/)](https://www.linkedin.com/in/lbrian-phaml/)
