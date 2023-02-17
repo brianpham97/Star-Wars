@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useRef} from 'react';
 import { compare } from "./helpers/compare";
 import { reset } from "../features/selected";
 import ClipLoader from "react-spinners/ClipLoader"
@@ -45,7 +45,7 @@ const Results = () => {
 
   const spinner =
     <div className="flex justify-center items-center">
-      <ClipLoader color={"#C1BCBB"} showLoader={showLoader} size={60}/>
+      <ClipLoader color={"#C1BCBB"} showloader={showLoader} size={60}/>
     </div>
 
   return (

@@ -1,7 +1,6 @@
 export const compare = (characters, movies) => {
-  let sameHomeworld;
+  let sameHomeworld, homeworldMovies, starshipMovies, vehicleMovies;
   let sameMovies = characters.leftFilms.filter(movie => characters.rightFilms.includes(movie))
-  let movieStorage = []
 
   if (sameMovies.length === 0) {
     return createDescription(characters, 'none')
@@ -16,20 +15,29 @@ export const compare = (characters, movies) => {
   let sameStarships = characters.leftStarships.filter(starship => characters.rightStarships.includes(starship))
 
   if (sameHomeworld) {
-    compareHomeworld(sameHomeworld, movies, movieStorage)
+    homeworldMovies = compareHomeworld(sameHomeworld, movies)
   }
 
   if (sameStarships.length > 0) {
-    compareStarships(sameStarships, movies, movieStorage)
+    starshipMovies = compareStarships(sameStarships, movies)
   }
 
   if (sameVehicles.length > 0) {
-    compareVehicles(sameVehicles, movies, movieStorage)
+    vehicleMovies = compareVehicles(sameVehicles, movies)
   }
-  return createDescription(characters, compareMovies(sameMovies, movieStorage))
+
+  const finalMovieStorage = finalizeMovieStorage(
+    homeworldMovies,
+    starshipMovies,
+    vehicleMovies
+  );
+
+
+  return createDescription(characters, compareMovies(sameMovies, finalMovieStorage))
 }
 
-const compareHomeworld = (sameHomeworld, movies, storage) => {
+const compareHomeworld = (sameHomeworld, movies) => {
+  let movieStorage = []
   for (let movie of movies) {
     let checkPlanets = movie.planets.filter(planet => {
       if (planet === sameHomeworld) {
@@ -38,51 +46,62 @@ const compareHomeworld = (sameHomeworld, movies, storage) => {
     });
 
     if (checkPlanets.length > 0) {
-      storage.push({ title: movie.title, url: movie.url });
+      movieStorage.push({ title: movie.title, url: movie.url });
     }
   }
+  return movieStorage
 }
 
-const compareStarships = (sameStarships, movies, storage) => {
+const compareStarships = (sameStarships, movies) => {
+  let movieStorage = [];
   for (let movie of movies) {
     let checkStarships = sameStarships.filter(starship =>
       movie.starships.includes(starship)
     );
 
     if (checkStarships.length > 0) {
-      storage.push({ title: movie.title, url: movie.url });
+      movieStorage.push({ title: movie.title, url: movie.url });
     }
   }
-  return;
+  return movieStorage;
 }
 
-const compareVehicles = (sameVehicles, movies, storage) => {
+const compareVehicles = (sameVehicles, movies) => {
+  let movieStorage = [];
   for (let movie of movies) {
     let checkVehicles = sameVehicles.filter(vehicle =>
       movie.vehicles.includes(vehicle)
     );
 
     if (checkVehicles.length > 0) {
-      storage.push({title: movie.title, url: movie.url})
+      movieStorage.push({title: movie.title, url: movie.url})
     }
   }
-  return
+  return movieStorage
+}
+
+const finalizeMovieStorage = (homeworldMovies, starshipMovies, vehicleMovies) => {
+  homeworldMovies = homeworldMovies || []
+  starshipMovies = starshipMovies || []
+  vehicleMovies = vehicleMovies || []
+
+  return [...homeworldMovies, ...starshipMovies, ...vehicleMovies]
 }
 
 const compareMovies = (sameMovies, storage) => {
   if (storage.length === 0) {
-    return []
+    return [];
   }
 
-  let matchingMovies = new Set()
-    for (let i = 0; i < storage.length; i++) {
-      if (sameMovies.includes(storage[i].url)) {
-        matchingMovies.add(storage[i].title)
-      }
+  let matchingMovies = new Set();
+  for (let i = 0; i < storage.length; i++) {
+    if (sameMovies.includes(storage[i].url)) {
+      matchingMovies.add(storage[i].title);
     }
+  }
 
-  return [...matchingMovies]
-}
+  return [...matchingMovies];
+};
 
 const createDescription = (characters, movies) => {
   let queryString = ''

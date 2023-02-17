@@ -1,5 +1,4 @@
 export const updateCharacter = (character) => {
-  const name = character.name
   const films = character.films
   const homeworld = character.homeworld
   const vehicles = character.vehicles
