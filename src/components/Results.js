@@ -45,7 +45,7 @@ const Results = () => {
 
   const spinner =
     <div className="flex justify-center items-center">
-      <ClipLoader color={"#C1BCBB"} showloader={showLoader} size={60}/>
+      <ClipLoader color={"#C1BCBB"} loading={showLoader} size={60}/>
     </div>
 
   return (
