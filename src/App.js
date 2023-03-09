@@ -17,13 +17,13 @@ const App = () => {
   const dispatch = useDispatch();
 
   const loadFilms = async () => {
-    const data = await axios.get("https://swapi.dev/api/films/");
-    const allFilms = data.data.results
+    const { data } = await axios.get("https://swapi.dev/api/films/");
+    const allFilms = data.results
     dispatch(films(allFilms))
   }
 
   useEffect(() => {
-    loadFilms()
+    loadFilms();
   }, [])
 
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import {photos} from '../pictures/photos'
+import { photos } from '../pictures/photos'
 import { useSelector } from "react-redux";
 
 const Panels = () => {
