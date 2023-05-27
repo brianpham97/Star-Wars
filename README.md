@@ -2,6 +2,8 @@
 
 Application using the Star Wars API from [SWAPI](https://swapi.dev/) to allow the user to select two characters and see if the two characters share a home planet, vehicle, or starship, show what movies they appear in together. Application is styled to a Star Wars theme.
 
+![starwars](https://github.com/brianpham97/Star-Wars/assets/107714292/13a59585-e5ac-4598-93b1-c9f77da30870)
+
 ## Technologies Used
 
 ### Front End Development:
